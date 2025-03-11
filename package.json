@@ -1,0 +1,31 @@
+{
+  "name": "skill-sharing-platform-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:generate": "npx prisma generate",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "prisma": "^6.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }, 
+  "nodemonConfig": {
+  "watch": ["src"],
+  "ext": "js,json",
+  "ignore": ["src/tests/"],
+  "exec": "node src/app.js"
+}
+}
