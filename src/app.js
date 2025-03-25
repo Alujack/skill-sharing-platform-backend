@@ -1,16 +1,24 @@
 const express = require("express");
-const { PrismaClient } = require("@prisma/client");
-const courseRoutes = require("./routes/courseRoutes");
+const dotenv = require("dotenv");
+const authRoutes = require("./routes/auth");
+const protectedRoutes = require("./routes/protected");
+const { swaggerUi, specs } = require("./config/swagger");
 
-const prisma = new PrismaClient();
+dotenv.config();
 const app = express();
 
 app.use(express.json());
 
-// Routes
-app.use("/api/courses", courseRoutes);
+// Swagger API Docs
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
+// Routes
+app.use("/auth", authRoutes);
+app.use("/protected", protectedRoutes);
+
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
+  console.log(`Swagger Docs available at http://localhost:${PORT}/api-docs`);
 });

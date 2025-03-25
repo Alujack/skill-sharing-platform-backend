@@ -12,6 +12,7 @@ services:
       - db
     environment:
       - DATABASE_URL=postgresql://user:password@db:5432/skillsharing
+      - JWT_SECRET=dedff887502d5660867d7782c14e8b8fff2c0fc99df04ad46e0ca8960d8c8b251960f9ee1fd1d595e854ddc007dab2505794432c1a44d279816601184af6176a
 
   db:
     container_name: skill-sharing-db
