@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const authRoutes = require("./routes/auth");
+const router = require("./routes/authRoutes");
 const protectedRoutes = require("./routes/protected");
 const { swaggerUi, specs } = require("./config/swagger");
 
@@ -13,7 +14,7 @@ app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 // Routes
-app.use("/auth", authRoutes);
+app.use("/auth", router);
 app.use("/protected", protectedRoutes);
 
 // Start the server
